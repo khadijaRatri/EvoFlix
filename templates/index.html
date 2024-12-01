@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation Homepage</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">EvoFlicks</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li>{% if user.is_authenticated %}
+                        Welcome, {{ user.username }}! <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+<section id="home" class="slider">
+    <div class="carousel">
+        <div class="slides">
+            <div class="slide"><img src="static/images/Header-2.jpg" alt="Slide 1"></div>
+            <div class="slide"><img src="static/images/pacific.jpg" alt="Slide 2"></div>
+            <div class="slide"><img src="static/images/Inline-06-1.jpg" alt="Slide 3"></div>
+            <div class="slide"><img src="static/images/web1.jpg" alt="Slide 4"></div>
+            <div class="slide"><img src="static/images/web2.jpg" alt="Slide 5"></div>
+            <div class="slide"><img src="static/images/Header-2.jpg" alt="Slide 6"></div>
+        </div>
+        <button class="prev">&lt;</button>
+        <button class="next">&gt;</button>
+    </div>
+</section>
+
+
+
+    <section id="recommendation" class="movie-recommendation">
+        <h2>EvoFlicks And Chill</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <img src="static/images/rec1.jpg" alt="Movie 1">
+                <h3>EvoFlicks</h3>
+            </div>
+            <div class="movie-card">
+                <img src="static/images/rec22.jpg" alt="Movie 2">
+                <h3>And</h3>
+            </div>
+            <div class="movie-card">
+                <img src="static/images/rec33.jpg" alt="Movie 3">
+                <h3>Chill</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-us">
+        <h2>About Us</h2>
+        <p><span style="font-size:150%;color:red;"> &hearts; </span>Welcome to EvoFlicks <span style="font-size:150%;color:red;"> &hearts; </span></p><br>
+         <p>    We bring you personalized movie recommendations based on your tastes.
+            Discover, explore, and enjoy a world of movies at your fingertips.
+        </p>
+    </section>
+
+    <script>
+    const slides = document.querySelector('.slides');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    let currentIndex = 0;
+
+    const totalSlides = document.querySelectorAll('.slide').length;
+
+    // Move to the next slide
+    function moveToNextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides; // Loop back to the first slide
+        updateCarousel();
+    }
+
+    // Move to the previous slide
+    function moveToPrevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Loop back to the last slide
+        updateCarousel();
+    }
+
+    // Update carousel position
+    function updateCarousel() {
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Attach event listeners to buttons
+    nextButton.addEventListener('click', moveToNextSlide);
+    prevButton.addEventListener('click', moveToPrevSlide);
+
+    // Optional: Auto-slide every 3 seconds
+    setInterval(moveToNextSlide, 3000);
+</script>
+
+</body>
+</html>

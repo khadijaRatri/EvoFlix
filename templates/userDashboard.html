@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvoFlix Recommender System</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/css/autoComplete.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body id="content" style="font-family: 'Poppins', sans-serif;">
+    <div class="container mt-5">
+        <center>
+            <h1>EvoFlix Recommender System</h1>
+            {% if user.is_authenticated %}
+            <h2>Welcome {{ user.username }} <span style="font-size:150%;color:red;">&hearts;</span></h2>
+            {% else %}
+            <h2>Welcome, Guest!</h2>
+            {% endif %}
+        </center>
+
+        <!-- Search Input -->
+        <div class="form-group shadow-textarea text-center mt-4">
+            <input type="text" name = "movie" id="autoComplete" class="movie form-control" autocomplete="off" placeholder="Enter the Movie Name/Title" style="width: 60%; margin: 0 auto;" required = "required" />
+        </div>
+
+        <!-- Search Button -->
+        <div class="form-group">
+            <button id="searchButton" class="btn btn-primary btn-block movie-button" style="background-color: #e50914; border-color: #e50914;" disabled = "true" >Search</button><br><br>
+        </div>
+
+        <!-- Loader -->
+        <div id="loader" class="text-center mt-4" style="display: none;">
+            <p>Loading...</p>
+        </div>
+
+        <!-- Failure Message -->
+        <div class="fail" >
+            <center><h3>Sorry! Try another movie name/title</h3></center>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="text-center mt-4" style="display: none;">
+            <h2 id="resultTitle" class="text-uppercase"></h2>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer text-center mt-5">
+            Made with <span style="font-size:150%;color:red;">&hearts;</span> by Sisters_In_Motion team
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Pass movie suggestions to JavaScript as a JSON object
+        var films = {{ suggestions|safe }};
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'autocomplete.js' %}"></script>
+    <script src="{% static 'recommend.js' %}"></script>
+</body>
+</html>

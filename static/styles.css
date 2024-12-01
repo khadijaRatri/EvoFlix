@@ -1,0 +1,163 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    color: #e50914; /* Netflix red for text */
+    line-height: 1.6;
+    background-color: #000; /* Black background */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000; /* Black background */
+    color: #e50914; /* Netflix red */
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e50914; /* Netflix red */
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .nav-links li {
+    margin-left: 20px;
+}
+
+.navbar .nav-links a {
+    color: #e50914; /* Netflix red */
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.navbar .nav-links a:hover {
+    color: #fff; /* White on hover for better contrast */
+}
+
+/* Carousel Container */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Slides Container */
+.slides {
+    display: flex;
+    transition: transform 0.7s ease-in-out;
+    width: 100%; /* Number of slides */
+}
+
+.slide {
+    flex: 1 0 100%; /* Each slide takes full width */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid #e50914; /* Netflix red border for emphasis */
+}
+
+/* Navigation Buttons */
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.7); /* Black with opacity */
+    color: #e50914; /* Netflix red */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+button.prev {
+    left: 20px;
+}
+
+button.next {
+    right: 20px;
+}
+
+button.prev:hover, button.next:hover {
+    background-color: #e50914;
+    color: #fff; /* White text on hover */
+}
+
+/* Movie Recommendation */
+.movie-recommendation {
+    padding: 40px;
+    text-align: center;
+    background: #000; /* Black background */
+    color: #e50914; /* Netflix red */
+}
+
+.movie-recommendation h2 {
+    margin-bottom: 20px;
+    color: #e50914; /* Netflix red */
+}
+
+.movie-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.movie-card {
+    background: #111; /* Dark gray card background */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    color: #e50914; /* Netflix red */
+}
+
+.movie-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.movie-card h3 {
+    margin-top: 10px;
+    color: #fff; /* White text for contrast */
+}
+
+/* About Us */
+.about-us {
+    padding: 40px;
+    background: #000; /* Black background */
+    color: #e50914; /* Netflix red */
+    text-align: center;
+}
+
+.about-us h2 {
+    margin-bottom: 20px;
+    color: #e50914; /* Netflix red */
+}
+
+.about-us p {
+    color: #fff; /* White for text readability */
+}
